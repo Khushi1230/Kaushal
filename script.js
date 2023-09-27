@@ -49,7 +49,7 @@ const countdown = () => {
   
   var present_date = new Date();
     
-  var event_day = new Date(present_date.getFullYear(), 10, 15)
+  var event_day = new Date(present_date.getFullYear(), 09, 16)
     
   if (present_date.getMonth() == 10 && present_date.getDate() > 15)
       event_day.setFullYear(event_day.getFullYear() + 1)
