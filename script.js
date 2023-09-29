@@ -18,6 +18,73 @@ function init() {
 }
 
 init();
+gsap.registerPlugin(ScrollTrigger);
+
+
+
+// scroll animation
+// const locoScroll = new LocomotiveScroll({
+//     el: document.querySelector('.kaushal-website'),
+//     smooth: true, // Enable smooth scrolling
+    
+// });
+// window.addEventListener("load", function(event) {
+//   let lazyScroll = new LocomotiveScroll({
+//   el: document.querySelector(".kaushal-website"),
+//   smooth: true
+//   });
+// });
+
+
+
+
+// gsap.from(".clip-top, .clip-bottom",2,{
+//     delay:1,
+//     height: "50vh",
+//     ease :"power4.inOut",
+// });
+
+// gsap.to(".marquee",3.5,{
+//     delay:0.75,
+//     top:"50%",
+//     ease:"power4.inOut",
+// });
+// gsap.from(".clip-top .marquee, .clip-bottom .marquee",5,{
+//     delay:1,
+//     left:"100%",
+//     ease:"power3.inOut",
+// });
+// gsap.from(".clip-center .marquee, .clip-bottom .marquee",5,{
+//     delay:1,
+//     left:"-50%",
+//     ease:"power3.inOut",
+// });
+// gsap.to(".clip-top",1,{
+//     delay:6,
+//     clipPath:"inset(0 0 100% 0)",
+//     ease:"power4,inOut",
+// });
+// gsap.to(".clip-bottom",1,{
+//     delay:6,
+//     clipPath:"inset(100% 0 0 0)",
+//     ease:"power4,inOut",
+// });
+// gsap.to(".clip-top .marquee .clip-bottom .marquee, .clip-center .marquee span",1,{
+//     delay:6,
+//     opacity:0,
+    
+    
+//     ease:"power2.inOut"
+// });
+// gsap.from(".clip-center",{
+//     delay:6,
+//     background:"white",
+    
+// })
+
+
+
+  
 
 
 // Navbar
@@ -49,7 +116,7 @@ const countdown = () => {
   
   var present_date = new Date();
     
-  var event_day = new Date(present_date.getFullYear(), 09, 16)
+  var event_day = new Date(present_date.getFullYear(), 9, 16)
     
   if (present_date.getMonth() == 10 && present_date.getDate() > 15)
       event_day.setFullYear(event_day.getFullYear() + 1)
@@ -145,7 +212,6 @@ function showSlides(n) {
   slides[slideIndex - 1].style.display = "block";
   dots[slideIndex - 1].className += " active";
 }
-
 
 
 
