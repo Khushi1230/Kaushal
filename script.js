@@ -55,7 +55,59 @@ tl.from(".title-container", {
   
   
  
+  const additionalX = { val: 0 };
+let containerWidth = window.innerWidth;
+let offset = 0;
+const items = document.getElementsByClassName("moving-gallery__slide");
 
+let additionalXAnim; // Declare additionalXAnim variable
+
+const animation = () => {
+  additionalXAnim = gsap.to(".moving-gallery__slide", {
+    duration: 30,
+    x: -containerWidth,
+    ease: Linear.easeNone,
+    paused: false,
+    repeat: -1,
+    modifiers: {
+      x: gsap.utils.unitize((x) => {
+        offset += additionalX.val;
+        x = (parseFloat(x) + offset) % (0.5 * containerWidth);
+        return x;
+      }),
+    },
+    onUpdate: () => {
+      // Add code here to run when the animation updates
+    },
+  });
+};
+  
+  // You can call the animation function here if needed
+  animation();
+  //Now, you can save this code in a .js file, and it will work as a JavaScript script. Make sure you have the necessary libraries (like GSAP) included in your HTML file where you reference this script. You can call the animation() function when you want to start the animation.
+  
+  
+  
+  
+  
+  
+  
+  const imagesScrollerTrigger = ScrollTrigger.create({
+    start: "top 0",
+    end: "bottom 0%",
+    onUpdate: function (self) {
+      const velocity = self.getVelocity();
+  
+      if (velocity > 0) {
+        if (additionalXAnim) additionalXAnim.kill();
+        additionalX.val = -velocity / 2000;
+        additionalXAnim = gsap.to(additionalX, { val: 0 });
+      }
+    }
+  });
+  
+  animation();
+  
 // Navbar
 menu.addEventListener('click', function () {
   menu.classList.toggle('is-active');

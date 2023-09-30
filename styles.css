@@ -1539,7 +1539,7 @@ canvas {
 /*--- About Section--- */
 .about,
 .event,
-.gallery,
+.moving-gallery,
 .about-college,
 .sponsors,
 .poster {
@@ -1550,7 +1550,7 @@ canvas {
 
 .about .kaushal-heading,
 .event .event-heading,
-.gallery h1,
+.moving-gallery h1,
 .about-college h1,
 .ml7 {
   font-size: var(--section-heading);
@@ -1576,6 +1576,32 @@ canvas {
   height: 100%;
   width: 100%;
 }
+.moving-gallery {
+  position: relative;
+  margin-top: 10%;
+  overflow-x: hidden;
+
+}
+
+.moving-gallery__wrapper {
+  display: flex;
+  align-items: center;
+  min-height: 200px;
+  width: fit-content;
+  justify-content: flex-start;
+  /* width: fit-content; */
+  position: relative;
+  /* overflow-x:hidden ;
+  box-sizing: border-box; */
+  
+}
+
+.moving-gallery__slide {
+  padding: 15px;
+  overflow-x: hidden;
+}
+
+
 
 
 .about-kaushal {
