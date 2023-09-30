@@ -65,6 +65,57 @@ html {
   color: var(--text-color);
   letter-spacing: 1rem;
 }
+/* .loader {
+  position: absolute;
+    width: 100%;
+    height: 100vh;
+}
+.loader-clip{
+    position: absolute;
+    width: 100%;
+    height: 33.3vh;
+    overflow: hidden;
+    z-index: 10000;
+}
+
+.clip-top{
+    top:0;
+    clip-path: inset(0 0 0 0);
+    background: #000;
+}
+.clip-bottom{
+    bottom:0;
+    clip-path: inset(0 0 0 0);
+    background: #000;
+    
+}
+.clip-center{
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 33.3vh;
+    z-index: 10;
+    top: 33.3vh;
+    background: transparent;
+}
+.marquee{
+    position: absolute;
+    top: 200%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 200vw;
+    color: #fff;
+    mix-blend-mode: difference;
+    font-size: 7vw;
+}
+.marquee-container{
+    width: 100%;
+    padding-top: 0.2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Playfair Display';
+} */
 
 .-website {
   display: none;
@@ -114,7 +165,36 @@ nav {
   font-size: 1.55rem;
   text-align: center;
   white-space: nowrap;
+  position: relative;
+  
   transition: all 0.1s ease-out;
+}
+.nav-menu li a::before {
+  content: '';
+  display: block;
+  height: 3px;
+  background-color: #7E65B9;
+  position: absolute;
+  top: 0;
+  width: 0%;
+  transition: all 0.3s ease-in-out;
+}
+.nav-menu li a:hover::before {
+  width: 100%;
+}
+
+.nav-menu li a::after {
+  content: '';
+  display: block;
+  height: 3px;
+  background-color: #7E65B9;
+  position: absolute;
+  bottom: 0;
+  width: 0%;
+  transition: all 0.3s ease-in-out;
+}
+.nav-menu li a:hover::after {
+  width: 100%;
 }
 
 
@@ -1430,6 +1510,7 @@ canvas {
   display: none;
 }
 
+
 .social {
   margin-top: 1%;
   z-index: 10;
@@ -1458,7 +1539,7 @@ canvas {
 /*--- About Section--- */
 .about,
 .event,
-.gallery,
+.moving-gallery,
 .about-college,
 .sponsors,
 .poster {
@@ -1469,7 +1550,7 @@ canvas {
 
 .about .kaushal-heading,
 .event .event-heading,
-.gallery h1,
+.moving-gallery h1,
 .about-college h1,
 .ml7 {
   font-size: var(--section-heading);
@@ -1495,6 +1576,32 @@ canvas {
   height: 100%;
   width: 100%;
 }
+.moving-gallery {
+  position: relative;
+  margin-top: 10%;
+  overflow-x: hidden;
+
+}
+
+.moving-gallery__wrapper {
+  display: flex;
+  align-items: center;
+  min-height: 200px;
+  width: fit-content;
+  justify-content: flex-start;
+  /* width: fit-content; */
+  position: relative;
+  /* overflow-x:hidden ;
+  box-sizing: border-box; */
+  
+}
+
+.moving-gallery__slide {
+  padding: 15px;
+  overflow-x: hidden;
+}
+
+
 
 
 .about-kaushal {
@@ -1520,12 +1627,14 @@ canvas {
 .event-schedule-btn {
   color: #fff;
   background-color: #7651ce;
+  transition: all 1s ease;
 }
 
 
 .event-schedule-btn:hover {
   background-color: #fff;
   color: #7651ce;
+  transition: all 1s ease;
 }
 
 .rulesreg-btn {
@@ -1860,6 +1969,7 @@ details summary {
     margin-top: 20px;
     background-color: #7651ce;
     cursor: pointer;
+    z-index: 1!important;
     color: var(--text-color);
     position: relative;
   }
@@ -1892,6 +2002,7 @@ details summary {
 
   .register-btn:hover {
       background-color: #22123d;
+      
   }
 
   .social {
@@ -2243,9 +2354,10 @@ details summary {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    column-gap: 10rem;    
+    column-gap: 10rem; 
+    
+      
 }
-
 
 .student_card {
     padding: 2.3vh;
@@ -2291,7 +2403,8 @@ details summary {
 }
 
 .position {
-    padding: 5px;
+    padding: 3px;
+    
 }
 
 .stu_icon {
@@ -2640,8 +2753,9 @@ a {
   font-weight: bold;
   font-size: 18px;
   transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
+  border:2px solid black;
   user-select: none;
+  /* background-color: cornflowerblue; */
 }
 
 /* Position the "next button" to the right */

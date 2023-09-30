@@ -20,6 +20,94 @@ function init() {
 init();
 
 
+
+// gsap animation
+var tl=gsap.timeline();
+
+tl.from(".title-container", {
+      opacity: 0,
+      delay:1.5,
+      translateY: 0,
+      duration: 1,
+      ease: "power4.out",
+    })
+  .from([".title-heading", ".title-subheading",".register-btn", ".days-remaining"], {
+      opacity: 0,
+      x:0,
+      translateY: 0,
+      duration: 1,
+      stagger: 0.2, // Adds a slight stagger effect to elements
+      ease: "power4.out",
+    }, "-=0.5");
+     // Starts the elements animation 0.5 seconds after the container
+  tl.from(".social",{
+      opacity:0,
+      y:40,
+      duration:1
+
+  });
+  tl.to(".social",{
+      opacity:1,
+      y:20,
+      duration:1
+
+  });
+  
+  
+ 
+  const additionalX = { val: 0 };
+let containerWidth = window.innerWidth;
+let offset = 0;
+const items = document.getElementsByClassName("moving-gallery__slide");
+
+let additionalXAnim; // Declare additionalXAnim variable
+
+const animation = () => {
+  additionalXAnim = gsap.to(".moving-gallery__slide", {
+    duration: 30,
+    x: -containerWidth,
+    ease: Linear.easeNone,
+    paused: false,
+    repeat: -1,
+    modifiers: {
+      x: gsap.utils.unitize((x) => {
+        offset += additionalX.val;
+        x = (parseFloat(x) + offset) % (0.5 * containerWidth);
+        return x;
+      }),
+    },
+    onUpdate: () => {
+      // Add code here to run when the animation updates
+    },
+  });
+};
+  
+  // You can call the animation function here if needed
+  animation();
+  //Now, you can save this code in a .js file, and it will work as a JavaScript script. Make sure you have the necessary libraries (like GSAP) included in your HTML file where you reference this script. You can call the animation() function when you want to start the animation.
+  
+  
+  
+  
+  
+  
+  
+  const imagesScrollerTrigger = ScrollTrigger.create({
+    start: "top 0",
+    end: "bottom 0%",
+    onUpdate: function (self) {
+      const velocity = self.getVelocity();
+  
+      if (velocity > 0) {
+        if (additionalXAnim) additionalXAnim.kill();
+        additionalX.val = -velocity / 2000;
+        additionalXAnim = gsap.to(additionalX, { val: 0 });
+      }
+    }
+  });
+  
+  animation();
+  
 // Navbar
 menu.addEventListener('click', function () {
   menu.classList.toggle('is-active');
@@ -49,7 +137,7 @@ const countdown = () => {
   
   var present_date = new Date();
     
-  var event_day = new Date(present_date.getFullYear(), 09, 16)
+  var event_day = new Date(present_date.getFullYear(), 9, 16)
     
   if (present_date.getMonth() == 10 && present_date.getDate() > 15)
       event_day.setFullYear(event_day.getFullYear() + 1)
@@ -145,7 +233,6 @@ function showSlides(n) {
   slides[slideIndex - 1].style.display = "block";
   dots[slideIndex - 1].className += " active";
 }
-
 
 
 
