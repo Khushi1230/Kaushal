@@ -1943,7 +1943,7 @@ details summary {
     margin-top: 20px;
     background-color: #7651ce;
     cursor: pointer;
-    z-index: 10!important;
+    z-index: 1!important;
     color: var(--text-color);
     position: relative;
   }
@@ -2328,9 +2328,10 @@ details summary {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    column-gap: 10rem;    
+    column-gap: 10rem; 
+    
+      
 }
-
 
 .student_card {
     padding: 2.3vh;

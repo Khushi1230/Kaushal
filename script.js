@@ -18,74 +18,43 @@ function init() {
 }
 
 init();
-gsap.registerPlugin(ScrollTrigger);
 
 
 
-// scroll animation
-// const locoScroll = new LocomotiveScroll({
-//     el: document.querySelector('.kaushal-website'),
-//     smooth: true, // Enable smooth scrolling
-    
-// });
-// window.addEventListener("load", function(event) {
-//   let lazyScroll = new LocomotiveScroll({
-//   el: document.querySelector(".kaushal-website"),
-//   smooth: true
-//   });
-// });
+// gsap animation
+var tl=gsap.timeline();
 
+tl.from(".title-container", {
+      opacity: 0,
+      delay:1.5,
+      translateY: 0,
+      duration: 1,
+      ease: "power4.out",
+    })
+  .from([".title-heading", ".title-subheading",".register-btn", ".days-remaining"], {
+      opacity: 0,
+      x:0,
+      translateY: 0,
+      duration: 1,
+      stagger: 0.2, // Adds a slight stagger effect to elements
+      ease: "power4.out",
+    }, "-=0.5");
+     // Starts the elements animation 0.5 seconds after the container
+  tl.from(".social",{
+      opacity:0,
+      y:40,
+      duration:1
 
+  });
+  tl.to(".social",{
+      opacity:1,
+      y:20,
+      duration:1
 
-
-// gsap.from(".clip-top, .clip-bottom",2,{
-//     delay:1,
-//     height: "50vh",
-//     ease :"power4.inOut",
-// });
-
-// gsap.to(".marquee",3.5,{
-//     delay:0.75,
-//     top:"50%",
-//     ease:"power4.inOut",
-// });
-// gsap.from(".clip-top .marquee, .clip-bottom .marquee",5,{
-//     delay:1,
-//     left:"100%",
-//     ease:"power3.inOut",
-// });
-// gsap.from(".clip-center .marquee, .clip-bottom .marquee",5,{
-//     delay:1,
-//     left:"-50%",
-//     ease:"power3.inOut",
-// });
-// gsap.to(".clip-top",1,{
-//     delay:6,
-//     clipPath:"inset(0 0 100% 0)",
-//     ease:"power4,inOut",
-// });
-// gsap.to(".clip-bottom",1,{
-//     delay:6,
-//     clipPath:"inset(100% 0 0 0)",
-//     ease:"power4,inOut",
-// });
-// gsap.to(".clip-top .marquee .clip-bottom .marquee, .clip-center .marquee span",1,{
-//     delay:6,
-//     opacity:0,
-    
-    
-//     ease:"power2.inOut"
-// });
-// gsap.from(".clip-center",{
-//     delay:6,
-//     background:"white",
-    
-// })
-
-
-
+  });
   
-
+  
+ 
 
 // Navbar
 menu.addEventListener('click', function () {
